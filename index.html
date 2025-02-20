@@ -25,7 +25,7 @@
 
     <div class="container"> <!-- DIV container -->
           
-        <div class="app"> <!-- APP --> 
+        <div id="app"> <!-- APP --> 
 
             <div class="row"> <!-- Row -->
 
@@ -35,21 +35,29 @@
                         <div class="col"> <!-- col 1.1 | Propriedade Computada -->
                             <img src="" alt="">
 
-                            <img :src="">
-                            <img :src="">
-                            <img :src="">
-                            <img :src="">
-                            <img :src="">
-                            <img :src="">
-                            <img :src="">
+                            <img :src="pao[0]">
+                            <img :src="alface">
+                            <img :src="ketchup">
+                            <img :src="mostarda">
+                            <img :src="maionese">
+                            <img :src="hamburger">
+                            <img :src="pao[1]">
 
                         </div> <!-- Fim col 1.1 -->
 
                     </div>
                 </div> <!-- Fim col 1 -->
 
-                <div class="col-md-6"> <!-- col 2 (seleção de produto) -->
-                    
+                <div class="col-md-6" v-if="etapa == 1"> <!-- col 2 (seleção de produto) -->
+    
+                    <!-- Tipo de Pão -->
+
+                    <div class="row mt-2">
+                        <div class="col"> <!-- col 2.1 -->
+                           
+                        </div> <!-- Fim col 2.1 -->
+                    </div>
+
                 </div> <!-- Fim col 2 -->
 
             </div> <!-- Fim Row -->
@@ -60,7 +68,13 @@
 
     <!-- Instacia VUE -->
     <script>
-       
+       //vm = view (html) model (js)
+        const vm = new Vue ({
+            el: '#app',
+
+            data
+        })
+
     </script>
 
 </body> <!-- Fim Body -->
