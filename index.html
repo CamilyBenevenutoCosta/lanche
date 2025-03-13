@@ -36,6 +36,7 @@
                             <img src="" alt="">
 
                             <img :src="pao[0]">
+                            <img :src="tomate">
                             <img :src="alface">
                             <img :src="ketchup">
                             <img :src="mostarda">
@@ -90,8 +91,16 @@
                                 </div>
 
                                 <div class="card-body">
+
+                                    <div class="form-check form-check-inline">
+
+                                        <input type="checkbox" class="form-check-input" value="tomate" v-model="inputSalada"> 
+
+                                        <label class="form-check-label">Tomate</label>
+
+                                    </div>
                                        
-                                    <div class="form-check">
+                                    <div class="form-check form-check-inline">
 
                                         <input type="checkbox" class="form-check-input" value="alface" v-model="inputSalada"> 
 
@@ -115,25 +124,25 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <div class="form-check">
+                                    <div class="form-check form-check-inline">
 
-                                        <input type="checkbox" class="form-check-input" value="ketchup" v-model="inputMolho"> 
+                                        <input type="checkbox" class="form-check-input" value="ketchup" v-model="inputMolhos"> 
 
                                         <label class="form-check-label">Ketchup</label>
                                         
                                     </div>
 
-                                    <div class="form-check">
+                                    <div class="form-check form-check-inline">
 
-                                        <input type="checkbox" class="form-check-input" value="mostarda" v-model="inputMolho"> 
+                                        <input type="checkbox" class="form-check-input" value="mostarda" v-model="inputMolhos"> 
 
                                         <label class="form-check-label">Mostarda</label>
                                         
                                     </div>
 
-                                    <div class="form-check">
+                                    <div class="form-check form-check-inline">
 
-                                        <input type="checkbox" class="form-check-input" value="maionese" v-model="inputMolho"> 
+                                        <input type="checkbox" class="form-check-input" value="maionese" v-model="inputMolhos"> 
 
                                         <label class="form-check-label">Maionese</label>
                                         
@@ -161,12 +170,12 @@
             data: {
                 inputTipoPao: '', // quando for aspas = *radio* = obrigatório
                 inputSalada: [], // quando for colchetes = *checkbox* = opcional
-
+                inputMolhos: [],
 
                 etapa: 1,
             },
 
-            // iMAGENS dos ingredientes ( propriedades computadas, reativas ) // a "," fecha
+            // iMAGENS dos ingredientes ( propriedades computadas, reativas ) // a "," fecha função
             computed:   {
                 pao () {
                     switch (this.inputTipoPao) {
@@ -179,6 +188,15 @@
                     }
                 },
 
+                tomate () {
+                    if (this.inputSalada.includes('tomate')) {
+                        return 'img/tomate.png'
+                    }
+                        
+                    return 'img/padrao/tomate.png'
+
+                },
+
                 alface () {
                     if (this.inputSalada.includes('alface')) {
                         return 'img/alface.png'
@@ -188,7 +206,30 @@
 
                 },
 
-                
+                ketchup() {
+                    if (this.inputMolhos.includes('ketchup')) {
+                        return 'img/ketchup.png'
+                    }
+
+                    return 'img/padrao/molho.png'
+                },
+
+                mostarda() {
+                    if (this.inputMolhos.includes('mostarda')) {
+                        return 'img/mostarda.png'
+                    }
+
+                    return 'img/padrao/molho.png'
+                },
+
+                maionese() {
+                    if (this.inputMolhos.includes('maionese')) {
+                        return 'img/maionese.png'
+                    }
+
+                    return 'img/padrao/molho.png'
+                },
+
             },
         })
 
