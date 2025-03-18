@@ -33,15 +33,19 @@
                     <div class="row mt-2">
 
                         <div class="col"> <!-- col 1.1 | Propriedade Computada -->
-                            <img src="" alt="">
+                            <img src="" alt=""> 
 
-                            <img :src="pao[0]">
+                            <img :src="pao[0]"> <!-- pao () {} -->
                             <img :src="tomate">
                             <img :src="alface">
                             <img :src="ketchup">
                             <img :src="mostarda">
                             <img :src="maionese">
-                            <img :src="hamburger">
+                            <img :src="barbecue">
+                            <img :src="bacon">
+                            <img :src="queijo">
+                            <img :src="cheddar">
+                            <img :src="burger"> <!-- burger () {} -->
                             <img :src="pao[1]">
                         </div> <!-- Fim col 1.1 -->
 
@@ -147,18 +151,137 @@
                                         <label class="form-check-label">Maionese</label>
                                         
                                     </div>
+
+                                    <div class="form-check form-check-inline">
+
+                                        <input type="checkbox" class="form-check-input" value="barbecue" v-model="inputMolhos"> 
+
+                                        <label class="form-check-label">Barbecue</label>
+                                        
+                                    </div>
                                 </div>
 
                             </div> <!-- Fim Card Molhos -->
                         </div> <!-- Col 2.3 -->
                     </div> <!-- Fim Molhos -->
 
+                    <!-- Acompanhamento -->
+
+                    <div class="row mt-2"> 
+                        <div class="col"> <!-- Col 2.4 -->
+                            <div class="card"> <!-- Card Acompanhamento -->
+                                
+                                <div class="card-header">
+                                    Acompanhamentos
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="form-check form-check-inline"> <!-- Bacon -->
+
+                                        <input type="checkbox" class="form-check-input" value="bacon"  v-model="inputAcompan">
+
+                                        <label class="form-check-label"> Bacon </label>
+
+                                    </div>
+                                </div>
+
+                            </div> <!-- Fim Card Acompanhamento -->
+                        </div> <!-- Fim Col 2.4 -->
+                    </div> <!-- Fim Acompanhamento -->
+
+                    <!-- Tipos Queijos -->
+                    <div class="row mt-2"> 
+                        <div class="col"> <!-- Col 2.5 -->
+                            <div class="card"> <!-- Card Queijo -->
+                                
+                                <div class="card-header">
+                                    Tipo de Queijo
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="form-check form-check-inline"> <!-- Queijo Prato -->
+
+                                        <input type="checkbox" class="form-check-input" value="queijo-prato"  v-model="inputQueijo">
+
+                                        <label class="form-check-label"> Queijo Prato </label>
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline"> <!-- Cheddar -->
+
+                                        <input type="checkbox" class="form-check-input" value="cheddar" v-model="inputQueijo">
+
+                                        <label class="form-check-label"> Cheddar </label>
+
+                                    </div>
+                                </div>
+
+                            </div> <!-- Fim Card Queijo -->
+                        </div> <!-- Fim Col 2.5 -->
+                    </div> <!-- Fim Tipos queijos -->
+
+                    <!-- Tipos Hamburguer -->
+                    <div class="row mt-2"> 
+                        <div class="col"> <!-- Col 2.6 -->
+                            <div class="card"> <!-- Card Hamburguer -->
+                                 
+                                <div class="card-header">
+                                    Tipo de Burguer
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="form-check form-check-inline"> <!-- Bovino -->
+
+                                        <input type="radio" class="form-check-input" value="bovino" v-model="inputBurger">
+
+                                        <label class="form-check-label"> Bovino </label>
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline"> <!-- Frango -->
+
+                                        <input type="radio" class="form-check-input" value="frango" v-model="inputBurger">
+
+                                        <label class="form-check-label"> Frango </label>
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline"> <!-- Vegetal -->
+
+                                        <input type="radio" class="form-check-input" value="vegetal" v-model="inputBurger">
+
+                                        <label class="form-check-label"> Vegetal </label>
+
+                                    </div>
+
+                                </div>
+
+                            </div> <!-- Fim Card Hamburguer -->
+                        </div> <!-- Fim Col 2.6 -->
+                    </div> <!-- Fim Tipos Hamburguer -->
+
+                    <!-- Fazer o Pedido -->
+
+                    <div class="row mt-2">
+
+                        <div class="col d-flex justify-content-end"> <!-- d-flex = display: flex -->
+                            <button class="btn btn-primary">
+                                Fazer o Pedido
+                            </button>
+                        </div>
+
+                    </div>
+
                 </div> <!-- Fim col 2 --> <!-- Fim Etapa 1 -->
 
+
+
+
             </div> <!-- Fim Row -->
-
         </div> <!-- Fim APP -->
-
     </div> <!-- Fim DIV container -->
 
     <!-- Instacia VUE -->
@@ -171,6 +294,10 @@
                 inputTipoPao: '', // quando for aspas = *radio* = obrigatório
                 inputSalada: [], // quando for colchetes = *checkbox* = opcional
                 inputMolhos: [],
+                inputAcompan: [],
+                inputQueijo: [],
+                inputBurger: '',
+                
 
                 etapa: 1,
             },
@@ -228,6 +355,53 @@
                     }
 
                     return 'img/padrao/molho.png'
+                },
+
+                barbecue() {
+                    if (this.inputMolhos.includes('barbecue')) {
+                        return 'img/barbecue.png'
+                    }
+
+                    return 'img/padrao/molho.png'
+                },
+
+                bacon() {
+                    if (this.inputAcompan.includes('bacon')) {
+                        return 'img/bacon.png'
+                    }
+
+                    return 'img/padrao/bacon.png'
+                },
+
+                queijo () {
+                    if (this.inputQueijo.includes('queijo-prato')) {
+                        return 'img/queijo-prato.png'
+                    }
+                        
+                    return 'img/padrao/queijo.png'
+
+                },
+
+                cheddar () {
+                    if (this.inputQueijo.includes('cheddar')) {
+                        return 'img/cheddar.png'
+                    }
+                        
+                    return 'img/padrao/queijo.png'
+
+                },
+
+                burger () {
+                    switch (this.inputBurger) {
+                        case 'bovino':
+                            return 'img/bovino.png'
+                        case 'frango' :   
+                            return 'img/frango.png'
+                        case 'vegetal': 
+                            return 'img/soja.png'    
+                        default : 
+                            return ['img/padrao/hamburguer.png']    
+                    }
                 },
 
             },
