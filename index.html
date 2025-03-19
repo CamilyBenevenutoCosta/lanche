@@ -37,6 +37,7 @@
 
                             <img :src="pao[0]"> <!-- pao () {} -->
                             <img :src="tomate">
+                            <img :src="cebola">
                             <img :src="alface">
                             <img :src="ketchup">
                             <img :src="mostarda">
@@ -101,6 +102,14 @@
                                         <input type="checkbox" class="form-check-input" value="tomate" v-model="inputSalada"> 
 
                                         <label class="form-check-label">Tomate</label>
+
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+
+                                        <input type="checkbox" class="form-check-input" value="cebola" v-model="inputSalada"> 
+
+                                        <label class="form-check-label">Cebola</label>
 
                                     </div>
                                        
@@ -268,7 +277,7 @@
                     <div class="row mt-2">
 
                         <div class="col d-flex justify-content-end"> <!-- d-flex = display: flex -->
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="button" @click="fazerPedido()">
                                 Fazer o Pedido
                             </button>
                         </div>
@@ -298,7 +307,6 @@
                 inputQueijo: [],
                 inputBurger: '',
                 
-
                 etapa: 1,
             },
 
@@ -321,6 +329,15 @@
                     }
                         
                     return 'img/padrao/tomate.png'
+
+                },
+
+                cebola () {
+                    if (this.inputSalada.includes('cebola')) {
+                        return 'img/cebola.png'
+                    }
+                        
+                    return 'img/padrao/cebola2.png'
 
                 },
 
@@ -405,6 +422,19 @@
                 },
 
             },
+
+            methods: {
+
+                fazerPedido() { // se Pão e Carne forem Selecionados, // = comentário para 1 linha /**/ = comentário para texto
+                    if (this.inputTipoPao && this.inputBurger) {
+                        this.etapa = 2 //avança para etapa 2
+                    } else {
+                        alert('Você precisa escolher no minimo um pão e uma carne')
+                    }
+                }
+
+            },
+
         })
 
     </script>
