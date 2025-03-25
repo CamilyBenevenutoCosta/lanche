@@ -288,13 +288,13 @@
 
                 </div> <!-- Fim col 2 --> <!-- Fim Etapa 1 -->
 
-                <div class="col-md-6" v-if="etapa == 2"> <!-- Col 3, Etapa 2 -->
+                <div class="col-md-6" v-if="etapa == 2"> <!-- Col 3, Etapa 2 --> <!-- Informe os dados -->
                     <div class="row mt-2">
                         <div class="col"> <!-- Col 3.1 -->
                             <div class="card"> 
 
                                 <div class="card-header">
-                                    Informe os seus dados
+                                    Informe os seus Dados
                                 </div>
 
                                 <div class="card-body">
@@ -311,7 +311,7 @@
 
                                     <div class="mb-3">
 
-                                        <label class="form-label">Mesa:</label>
+                                        <label class="form-label">Número da Mesa:</label>
 
                                         <br>
 
@@ -331,7 +331,7 @@
                                 Editar o Lanche
                             </button>
 
-                            <button type="button" class="btn btn-success" @click="confirmarPedido()">
+                            <button type="button" class="btn btn-success" @click="confirmarPedido()"> <!-- Vai para a etapa 3 -->
                                 Confirmar Pedido
                             </button>
 
@@ -340,21 +340,21 @@
 
                 </div> <!-- Fim Col 3, Etapa 2 -->
 
-                <div class="col-md-6" v-if="etapa == 3"> <!-- Col 4 Etapa 3 -->
+
+                <div class="col-md-6" v-if="etapa == 3"> <!--  Etapa 3 Col 4 --> <!-- repetir pedido ou pedido confirmado -->
                     <div class="row mt-2">
                         <div class="col"> <!-- Col 4.1 -->
                             <div class="card">
 
                                 <div class="card-header">
-                                    Seu Pedido Foi Confirmado
+                                    Seu Pedido Foi Confirmado!
                                 </div>
 
                                 <div class="card-body">
                                     
-                                    <p>Agora é só aguardar 10 minutinhos!
-                                        <br>
-                                        <br>
-                                        Vamos chamar vc em breve.</p>
+                                    <p>Agora é só aguardar!</p>
+                                
+                                    <p>Vamos chamar vc em breve.</p>
 
                                 </div>
 
@@ -362,7 +362,22 @@
                         </div> <!-- Fim Col 4.1 -->
                     </div>
 
-                </div> <!-- Fim Col 4 Etapa 3 -->
+                    <div class="row mt-2">
+                        <div class="col d-flex justify-content-between"> <!-- Col 4.2 -->
+
+                            <button class="btn btn-primary" type="button" @click="etapa = 1"> <!-- Botão para repetir o pedido -->
+                                Repetir pedido
+                            </button>
+
+                            <button class="btn btn-success" type="button" @click="novoPedido()"> <!-- Botão para novo pedido -->
+                                Novo pedido
+                            </button>
+
+                        </div> <!-- Fim Col 4.2 -->
+                    </div>
+
+                </div> <!-- Fim Etapa 3  Fim Col 4 -->
+                
 
             </div> <!-- Fim Row -->
         </div> <!-- Fim APP -->
@@ -375,6 +390,7 @@
             el: '#app',
 
             data: {
+                etapa: 1,
                 inputTipoPao: '', // quando for aspas = *radio* = obrigatório
                 inputSalada: [], // quando for colchetes = *checkbox* = opcional
                 inputMolhos: [],
@@ -384,8 +400,7 @@
 
                 inputNome: '',
                 inputMesa: '',
-                
-                etapa: 1,
+                  
             },
 
             // iMAGENS dos ingredientes ( propriedades computadas, reativas ) // a "," fecha função
@@ -517,6 +532,19 @@
                     } else {
                         alert('Você precisa informar o seu Nome e a sua Mesa.')
                     }
+                },
+
+                novoPedido() {
+                    this.etapa = 1
+
+                    this.inputTipoPao = ''
+                    this.inputSalada = []
+                    this.inputMolhos = []
+                    this.inputAcompan = []
+                    this.inputQueijo = []
+                    this.inputBurger = ''
+                    this.inputNome = ''
+                    this.inputMesa = ''
                 },
 
             },
